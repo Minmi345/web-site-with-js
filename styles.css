@@ -80,16 +80,16 @@ body {
 /*TOPBAR*/
 .top {
     position: sticky;
+    justify-content: space-between;
 }
 
 .foot{
-    align-items: right;
-    text-align: right;
-    justify-content: right;
+    align-items: center;
+    text-align: center;
+    justify-content:flex-end;
 }
 
 .bar {
-    position: sticky;
     background-color: var(--highlight-colour);
     top: 0;
     z-index: 10;
@@ -98,7 +98,6 @@ body {
     padding: 5px 10px;
     margin: 0;
     display: flex;
-    justify-content: space-between;
 }
 
 nav {
