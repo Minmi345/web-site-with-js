@@ -1,0 +1,139 @@
+:root {
+
+    /* === Fireleaf Theme Colours === */
+
+    /* Text & Background */
+    --text-colour: #3b1f0d;
+    /* Deep brown for main text */
+    --muted-text-colour: #7a5c49;
+    /* Softer brown for secondary text */
+    --heading-colour: #8c2f00;
+    /* Warm reddish-brown for headings */
+    --background-colour: #fffaf5;
+    /* Soft cream background */
+    --card-background: #fff4e8;
+    /* Slightly darker card bg */
+    --border-colour: #e6cbb3;
+    /* Light tan border */
+    --border-test: 1px solid red;
+
+    /* Accent & Interactive */
+    --primary-colour: #d95b00;
+    /* Vibrant orange */
+    --primary-hover: #b94b00;
+    /* Slightly darker orange */
+    --secondary-colour: #e27b2d;
+    /* Amber accent */
+    --highlight-colour: #f4b860;
+    /* Golden highlight */
+    --link-colour: #c44d0a;
+    /* Rusty red links */
+    --link-hover-colour: #a63f08;
+    /* Darker hover tone */
+
+    /* Decorative / Additional */
+    --success-colour: #cfae6f;
+    /* Muted golden for success */
+    --warning-colour: #f4a259;
+    /* Warm orange for warning */
+    --error-colour: #d94f04;
+    /* Deep red-orange for error */
+    --shadow-colour: rgba(70, 30, 10, 0.15);
+    /* Soft warm shadow */
+
+    /* Gradients & Special */
+    --gradient-warm: linear-gradient(135deg, #ffb267, #ff7a3c, #d95b00);
+    --gradient-soft: linear-gradient(135deg, #fff4e8, #ffe1c2);
+
+    /* === Fireleaf Typography === */
+    --font-heading: 'Playfair Display', serif;
+    /* Elegant, autumnal serif */
+    --font-body: 'Cormorant Garamond', serif;
+    /* Classic and warm body text */
+    --font-accent: 'Great Vibes', cursive;
+    /* Optional decorative font */
+
+    --font-brand: 'Arizonia', cursive;
+}
+
+/*EVERYTHING*/
+html,
+body {
+    background-color: var(--background-colour);
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-colour);
+}
+
+/*BRAND*/
+
+
+.brand-img{
+    max-height: 3rem;
+}
+
+.brand-txt {
+    font-size: 1.5rem;
+    font-family: var(--font-brand);
+}
+
+/*TOPBAR*/
+.top {
+    position: sticky;
+}
+
+.foot{
+    align-items: right;
+    text-align: right;
+    justify-content: right;
+}
+
+.bar {
+    position: sticky;
+    background-color: var(--highlight-colour);
+    top: 0;
+    z-index: 10;
+    text-align: center;
+    align-items: center;
+    padding: 5px 10px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav {
+    flex: 1;
+    /* nav takes remaining space */
+    justify-content: center;
+    align-items: center;
+    /* center menu items */
+}
+
+nav a {
+    color: var(--text);
+    display: inline-block;
+    text-decoration: none;
+    margin: 0 5%;
+    padding: 4px 10px;
+    border-radius: 0.5rem;
+}
+
+nav a:hover {
+    /*анімація туто*/
+    background-color: var(--bg-nav-buttons-hover);
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    border: var(--border-test);
+}
+
+@media (max-width: 768px) {
+
+    html,
+    body {
+        font-size: 1.4rem;
+    }
+}
