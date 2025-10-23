@@ -1,13 +1,19 @@
-.post {
+.post-grid {
+    display: grid;
+    margin: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.7rem;
+}
 
-    width: 400px;
+.post {
+    width: 100%;
     background-color: aqua;
     border-radius: 2rem;
-    padding: 1rem;
     justify-content: space-between;
 }
 
 .post-title{
+    margin: 1.5rem 1rem;
     font-size: 2rem;
 }
 
@@ -17,6 +23,7 @@
 }
 
 .post-user{
+    margin: 0 1rem;
     display: flex;
     align-content: center;
     gap: 1rem;
@@ -46,7 +53,9 @@
 }
 
 .post-text {
+    margin: 0 1rem;
     padding: 0.5rem 0;
+    text-align: left;
 }
 
 .post-details {
@@ -57,9 +66,46 @@
 }
 
 .post-reactions {
-    margin-top: 2rem;
-        display: flex;
-        justify-content: flex-end;
-            /* Align divs to right */
-        gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    margin-right: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.post-tags{
+    margin: 0.3rem 1rem;
+}
+
+.post-comment-section {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: yellowgreen;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    margin-top: auto; /* Pushes to bottom */
+}
+
+.post-comment {
+    background-color: hotpink;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    padding: 0.5rem;
+
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.icon-in-text{
+    margin: 0 0.5rem;
 }

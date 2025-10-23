@@ -126,7 +126,7 @@ nav a:hover {
 *::after,
 *::before {
     box-sizing: border-box;
-    border: var(--border-test);
+    /*border: var(--border-test);*/
 }
 
 .main-layout {
