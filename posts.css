@@ -10,6 +10,7 @@
     background-color: aqua;
     border-radius: 2rem;
     justify-content: space-between;
+    display: flex;    
 }
 
 .post-title{
@@ -108,4 +109,27 @@
 
 .icon-in-text{
     margin: 0 0.5rem;
+}
+
+@media (min-width: 1800px) {
+    .post {
+            display: flex;
+        }
+
+        .post-comment-section {
+            margin-top: 0;
+            margin-bottom: auto;
+        }
+}
+
+@media (max-width: 1800px) {
+    .post {
+            flex-direction: column;
+        }
+}
+
+@media (max-width: 768px) {
+    .post-grid {
+            grid-template-columns: 1fr;
+        }
 }
