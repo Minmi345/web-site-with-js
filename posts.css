@@ -1,0 +1,65 @@
+.post {
+
+    width: 400px;
+    background-color: aqua;
+    border-radius: 2rem;
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+.post-title{
+    font-size: 2rem;
+}
+
+.post-name{
+    margin: 0;
+
+}
+
+.post-user{
+    display: flex;
+    align-content: center;
+    gap: 1rem;
+}
+
+.post-user-texts{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.post-img{
+    width:  3rem;
+    height: 3rem;
+    background-color: blueviolet;
+    border-radius: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-mail{
+    margin-top: 0;
+    text-align: right;
+    font-size: 0.8rem;
+    color: brown;
+}
+
+.post-text {
+    padding: 0.5rem 0;
+}
+
+.post-details {
+    display: inline-block;
+    background-color: brown;
+    padding: 0.1rem 1rem;
+    border-radius: 1rem;
+}
+
+.post-reactions {
+    margin-top: 2rem;
+        display: flex;
+        justify-content: flex-end;
+            /* Align divs to right */
+        gap: 1rem;
+}
