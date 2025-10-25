@@ -89,6 +89,15 @@ body {
     justify-content: flex-end;
 }
 
+main {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    min-height: 71vh;
+    /* 100-6*2 */
+    padding: 20px;
+}
+
 .bar {
     background-color: var(--highlight-colour);
     top: 0;
@@ -96,8 +105,10 @@ body {
     text-align: center;
     align-items: center;
     padding: 5px 10px;
+    font-size: larger;
     margin: 0;
     display: flex;
+    height: 6vh;
 }
 
 nav {
@@ -105,7 +116,6 @@ nav {
     /* nav takes remaining space */
     justify-content: center;
     align-items: center;
-    /* center menu items */
 }
 
 nav a {
@@ -130,10 +140,12 @@ nav a:hover {
 }
 
 .main-layout {
-    background-color: var(--error-colour);
+    background-color: var(--secondary-colour);
     width: 100%;
     height: 9rem;
     font-size: 3rem;
+    display: flex;
+    justify-content: center;
     align-items: center;
     text-align: center;
     color: var(--text-colour);

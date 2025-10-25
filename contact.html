@@ -1,22 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
-    <title>Document</title>
-</head>
-<body>
-        <header class="top bar">
-            <img class="brand-img" src="./assets/fireleaf.png">
-            <p class="brand-txt"> FireLeaf</p>
-            <nav>
-                <a href="./index.html">Home</a>
-                <a href="./posts.html">Posts</a>
-                <a href="./contact.html">Contact</a>
-            </nav>
-        </header>
+    <link rel="stylesheet" href="./css/contact.css">
+    <script src="https://kit.fontawesome.com/dc4562ddf8.js" crossorigin="anonymous"></script>
 
-        
+    <script src="./js/contact.js"></script>
+    <title>Contact us!</title>
+</head>
+
+<body>
+    <header class="top bar">
+        <img class="brand-img" src="./assets/fireleaf.png">
+        <div class="brand-txt"> FireLeaf</div>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="./posts.html">Posts</a>
+            <a href="./contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="title">
+                Contact us</div>
+            <form action="" id="ContactForm">
+                <div class="details-container">
+                    <label for="name"><i class="fa-solid fa-person icon-in-text"></i>Name:</label>
+                    <input type="text" id="name"> <br>
+                </div>
+                    <p id="error-name"></p>
+                <div class="details-container">
+                    <label for="email"><i class="fa-solid fa-envelope icon-in-text"></i>Email:</label>
+                    <input type="text" id="email"> <br>
+                </div>
+                    <p id="error-email"></p>
+                <div class="details-container">
+                    <label for="name"><i class="fa-solid fa-message icon-in-text"></i>Message:</label>
+                    <input type="text" id="message"> <br>
+                </div>
+                    <p id="error-message"></p>
+                    <label for="checkbox">Confirm to send
+                    <input type="checkbox" id="tick"></label>
+
+
+                    
+
+                <input type="submit" id="bootifulsubmitbutton">
+            </form>
+        </div>
+                        <div id="success"></div>
+
+    </main>
+
+    <footer class="foot bar">
+        <div class="brand-txt"> FireLeaf 2025&copy;</div>
+        <a href="index.html"><img class="brand-img" src="assets/fireleaf.png"></a>
+    </footer>
+
 </body>
+
 </html>

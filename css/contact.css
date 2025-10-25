@@ -1,0 +1,98 @@
+.container {
+    width: 60%;
+    background-color: var(--card-background);
+    border: 5px solid var(--border-colour);
+    border-radius: 5rem;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+main {
+    height: 87.89vh; /* 100-6*2 */
+    padding: 20px;
+}
+
+.title {
+    font-size: 2rem;
+    color: var(--heading-colour);
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#success{
+    margin-top: auto;
+    background-color:var(--success-colour);
+    padding: 0.5rem 1.5rem;
+    border-radius: 1rem;
+}
+ label {
+     font-size: 1.2em;
+     /* Font size */
+     color: #333;
+     /* Text color */
+     margin-bottom: 5px;
+     /* Space below the label */
+     display: block;
+     /* Display label as block element */
+ }
+
+ /* Style for the input field */
+ input[type="text"] {
+
+     /* Full width */
+     padding: 10px;
+     /* Space inside the input */
+     border: 1px solid #ccc;
+     /* Border color */
+     border-radius: 1rem;
+     /* Rounded corners */
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     /* Shadow effect */
+ }
+
+  #bootifulsubmitbutton {
+    display: flex;
+    margin: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    background-color: var(--highlight-colour);
+    border-radius: 1rem;
+  }
+
+ /* Change input border color on focus */
+ input[type="text"]:focus {
+     border-color: var(--primary-colour);
+     /* Border color on focus */
+     outline: none;
+     /* Remove default outline */
+ }
+
+#bootifulsubmitbutton {
+     padding: 10px 20px;
+     font-size: 1em;
+     cursor: pointer;
+     /* Change cursor to pointer */
+ }
+
+#bootifulsubmitbutton:disabled {
+    background-color: #ccc;
+    /* Change color when disabled */
+    cursor: not-allowed;
+    /* Change cursor to indicate it's disabled */
+}
+ .details-container{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: 1rem;
+ }
+
+p{
+    display: flex;
+    justify-content: flex-end;
+
+    color:var(--error-colour);
+}
