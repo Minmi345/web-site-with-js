@@ -1,13 +1,13 @@
 .post-grid {
     display: grid;
-    margin: 1rem;
+    margin: 2rem;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 0.7rem;
+    gap: 2.5rem;
 }
 
 .post {
     width: 100%;
-    background-color: aqua;
+    background-color: var(--secondary-colour);
     border-radius: 2rem;
     justify-content: space-between;
     display: flex;    
@@ -39,7 +39,7 @@
 .post-img{
     width:  3rem;
     height: 3rem;
-    background-color: blueviolet;
+    background-color: var(--highlight-colour);
     border-radius: 5rem;
     display: flex;
     align-items: center;
@@ -50,7 +50,7 @@
     margin-top: 0;
     text-align: right;
     font-size: 0.8rem;
-    color: brown;
+    color: var(--heading-colour);
 }
 
 .post-text {
@@ -61,9 +61,10 @@
 
 .post-details {
     display: inline-block;
-    background-color: brown;
+    background-color: var(--highlight-colour);
     padding: 0.1rem 1rem;
     border-radius: 1rem;
+    color: var(--heading-colour);
 }
 
 .post-reactions {
@@ -82,8 +83,8 @@
 .post-comment-section {
     width: 100%;
     padding: 1rem;
-    border-radius: 2rem;
-    background-color: yellowgreen;
+    border-top: 4px dotted var(--heading-colour);
+   /* background-color: var(--primary-hover);*/
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
@@ -91,7 +92,7 @@
 }
 
 .post-comment {
-    background-color: hotpink;
+    border: 3px solid var(--warning-colour);
     width: 100%;
     display: flex;
     flex-direction: column;
