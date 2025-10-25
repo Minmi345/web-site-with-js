@@ -27,18 +27,24 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     name.addEventListener("blur", () => {
         name.style.borderColor = "#ccc"
+        nameerr.textContent = "";
+
     })
     mail.addEventListener("focus", () => {
         mail.style.borderColor = "var(--primary-colour)"
     })
     mail.addEventListener("blur", () => {
         mail.style.borderColor = "#ccc"
+        mailerr.textContent = "";
+
     })
     message.addEventListener("focus", () => {
         message.style.borderColor = "var(--primary-colour)"
     })
     message.addEventListener("blur", () => {
-        message.style.borderColor = "#ccc"
+        message.style.borderColor = "#ccc";
+        messageer.textContent = "";
+
     })
 
     cb.addEventListener("change", () => {
