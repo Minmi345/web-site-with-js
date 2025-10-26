@@ -5,7 +5,7 @@
     border-radius: 5rem;
     margin: auto;
     display: flex;
-    justify-content: center;
+    margin-top: 10%;
     align-items: center;
     flex-direction: column;
 }
@@ -13,6 +13,7 @@
 main {
     height: 87.89vh; /* 100-6*2 */
     padding: 20px;
+    flex-direction: column;
 }
 
 .title {

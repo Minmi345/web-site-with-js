@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     name.addEventListener("blur", () => {
         name.style.borderColor = "#ccc"
-        nameerr.textContent = "";
+        nameerr.textContent = "‎ ‎";
 
     })
     mail.addEventListener("focus", () => {
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     mail.addEventListener("blur", () => {
         mail.style.borderColor = "#ccc"
-        mailerr.textContent = "";
+        mailerr.textContent = "‎ ‎";
 
     })
     message.addEventListener("focus", () => {
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     message.addEventListener("blur", () => {
         message.style.borderColor = "#ccc";
-        messageer.textContent = "";
+        messageer.textContent = "‎ ‎";
 
     })
 
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
             name.style.border = "1px solid red";
         }
         else{
-            nameerr.textContent = "";
+            nameerr.textContent = "‎ ‎";
             name.style.border = "1px solid #ccc";
             isname = true;
         }
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         else{
             mail.style.border = "1px solid #ccc";
-            mailerr.textContent = "";
+            mailerr.textContent = "‎ ‎";
             ismail = true;
         }
         console.log(name.value);
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         else {
             message.style.border = "1px solid #ccc";
-            messageer.textContent = "";
+            messageer.textContent = "‎ ‎";
             ismessage = true;
         }
         
