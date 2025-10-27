@@ -1,14 +1,15 @@
 import { GetPosts, GetPost, GetUserById, GetComments } from './fetchAPI.js';
 
 let place = document.getElementById("post-grid");
-console.log('helloooo?')
-LoadPosts();
+let skip = 0;
 
-async function LoadPosts() {
+export async function LoadPosts() {
     let posts;
     try {
 
-        posts = await GetPosts(5);
+        let load = 6;
+        posts = await GetPosts(load,skip);
+        skip +=load
     }
     catch {
         const goose = document.querySelector(".error-status");
@@ -27,7 +28,6 @@ async function LoadPosts() {
 
 
         //postTemplate.appendChild(await LoadUser( await GetUserById(post.userId)));
-
 
         postTemplate.querySelector('.post-text').textContent = post.body;
 

@@ -1,12 +1,15 @@
 import { LoadPosts } from './generateui.js';
 
 document.addEventListener("DOMContentLoaded", () => {
+    LoadPosts();
 
-
-    console.log('working?')
-    alert("should be generated");
 
 })
+
+let btn = document.getElementById("load-more").addEventListener("click",MorePosts);
+function MorePosts(){
+    LoadPosts();
+}
 
 
 //working..!

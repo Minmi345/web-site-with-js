@@ -1,3 +1,6 @@
+main{
+    flex-direction: column;
+}
 #post-grid {
     display: grid;
     margin: 2rem;
