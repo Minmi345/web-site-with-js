@@ -1,38 +1,4 @@
 const BASE = 'https://dummyjson.com';
-
-/**
- * Fetches comments for a specific post.
- * @param {number} postid - The identifier of the post for which to fetch comments.
- * @returns {Promise<Array<Comment>>} A promise that resolves to an array of comment objects.
- * @throws {Error} Throws an error if the fetch request is not successful.
- */
-export async function GetComments(postid) {
-    const res = await fetch(`${BASE}/comments/post/${postid}`);
-    if (!res.ok) throw new Error('No comments?');
-    return res.json();
-}
-/**
- * @param {*} limit 
- * @returns {Promise<Array<Post>>}
- */
-export async function GetPosts(limit = 1) {
-    const res = await fetch(`${BASE}/posts?limit=${limit}`);
-    if (!res.ok) throw new Error('Failed to fetch posts');
-    return res.json();
-}
-export async function GetPost(id = 1) {
-    const res = await fetch(`${BASE}/posts/${id}`);
-    if (!res.ok) throw new Error('Failed to fetch post');
-    return res.json();
-}
-
-export async function GetUserById(id) {
-    const res = await fetch(`${BASE}/users/${id}`);
-    //filter?key=hair.color&value=Brown
-    if (!res.ok) throw new Error('Failed to fetch products');
-    return res.json();
-}
-
 /**
  * @typedef {Object} Post
  * @property {number} id - Unique identifier for the post.
@@ -93,6 +59,39 @@ export async function GetUserById(id) {
  * @property {number} likes - Total number of likes for the comment.
  * @property {User} user - The user who made the comment.
  */
+
+/**
+ * Fetches comments for a specific post.
+ * @param {number} postid - The identifier of the post for which to fetch comments.
+ * @returns {Promise<Array<Comment>>} A promise that resolves to an array of comment objects.
+ * @throws {Error} Throws an error if the fetch request is not successful.
+ */
+export async function GetComments(postid) {
+    const res = await fetch(`${BASE}/comments/post/${postid}`);
+    if (!res.ok) throw new Error('No comments?');
+    return res.json();
+}
+/**
+ * @param {*} limit 
+ * @returns {Promise<Array<Post>>}
+ */
+export async function GetPosts(limit = 1) {
+    const res = await fetch(`${BASE}/posts?limit=${limit}`);
+    if (!res.ok) throw new Error('Failed to fetch posts');
+    return res.json();
+}
+export async function GetPost(id = 1) {
+    const res = await fetch(`${BASE}/posts/${id}`);
+    if (!res.ok) throw new Error('Failed to fetch post');
+    return res.json();
+}
+
+export async function GetUserById(id) {
+    const res = await fetch(`${BASE}/users/${id}`);
+    //filter?key=hair.color&value=Brown
+    if (!res.ok) throw new Error('Failed to fetch products');
+    return res.json();
+}
 
 
 

@@ -4,114 +4,8 @@ let place = document.getElementById("post-grid");
 console.log('helloooo?')
 LoadPosts();
 
-//console.log(place)
-//LoadPosts();
-
-/*async function LoadPosts() {
-    let UglyJSONposts = await GetPosts(3);
-    let posts = UglyJSONposts.posts;
-    const frag = document.createDocumentFragment(); //stolen from l10
-    console.log("-----------");
-
-
-    //frag.append(place);
-
-    console.log('sleepy')
-
-    ////////////////////////////
-
-    for (let post of posts) {
-
-        let postElement = document.createElement("div");
-        postElement.className = "post";
-        place.appendChild(postElement);
-
-        let titleEl = document.createElement("p");
-        titleEl.className = "post-title";
-        titleEl.textContent = post.title;
-        postElement.appendChild(titleEl);
-
-        //add user
-        let user = await GetUserById(post.userId);
-
-        let userDiv = document.createElement("div");
-        userDiv.className = "post-user";
-        postElement.appendChild(titleEl);
-
-        //should remake it!
-        let userimg = document.createElement("div");
-        userimg.className = "post-img";
-        userDiv.appendChild(userDiv);
-
-        let userTextsDiv = document.createElement("div");
-        userTextsDiv.className = "post-user-texts";
-        userDiv.appendChild(userTextsDiv);
-
-        let userName = document.createElement("p");
-        userName.className = "post-name";
-        userName.textContent = user.firstName + " " + user.maidenName + " " + user.lastName;
-        userTextsDiv.appendChild(userName);
-
-        let useremail = document.createElement("p");
-        useremail.className = "post-email";
-        useremail.textContent = user.email;
-        userTextsDiv.appendChild(useremail);
-
-        let bodytext = document.createElement("p");
-        bodytext.className = "post-text";
-        bodytext.textContent = post.body;
-        postElement.appendChild(bodytext);
-
-        let tagsDiv = document.createElement("div");
-        tagsDiv.className = "post-tags";
-        postElement.appendChild(tagsDiv);
-
-        for (let tag of post.tags) {
-            let tagel = document.createElement(div);
-            tagel.className = "post-details";
-            tagel.textContent = tag;
-            tagsDiv.appendChild(tagel);
-
-        }
-
-
-        let reactionsDiv = document.createElement("div");
-        reactionsDiv.className = "post-reactions";
-        postElement.appendChild(reactionsDiv);
-
-        let likeel = document.createElement(div);
-        likeel.className = "post-details";
-        likeel.textContent = tag;
-        reactionsDiv.appendChild(likeel);
-
-        ///////////////////
-
-        console.log(`likes: ${post.reactions?.likes ?? "Reactions not available"}`);
-        console.log(`dislikes: ${post.reactions?.dislikes ?? "Reactions not available"}`);
-        console.log(post.views);
-
-
-
-        let UglyJSONcomments = await GetComments(post.id);
-        let comments = UglyJSONcomments.comments;
-
-        let i = 0;
-        for (let comment of comments) {
-            console.log(`-------comment ${i}`);
-            i++;
-            console.log(comment.body);
-            console.log(comment.likes);
-            let user = await GetUserById(comment.user.id);
-            console.log(user.firstName + user.maidenName + user.lastName);
-            console.log(user.email);
-
-        }
-    }
-}*/
-
-
 async function LoadPosts() {
-    let UglyJSONposts = await GetPosts(16);
+    let UglyJSONposts = await GetPosts(5);
     let posts = UglyJSONposts.posts;
     const frag = document.createDocumentFragment();
 
@@ -133,7 +27,7 @@ async function LoadPosts() {
 
         let userImg = document.createElement("div");
         userImg.className = "post-img";
-        userDiv.appendChild(userImg); // Corrected here
+        userDiv.appendChild(userImg);
 
         let userTextsDiv = document.createElement("div");
         userTextsDiv.className = "post-user-texts";
@@ -145,7 +39,7 @@ async function LoadPosts() {
         userTextsDiv.appendChild(userName);
 
         let userEmail = document.createElement("p");
-        userEmail.className = "post-mail"; // Corrected class name
+        userEmail.className = "post-mail";
         userEmail.textContent = user.email;
         userTextsDiv.appendChild(userEmail);
 
@@ -188,9 +82,22 @@ async function LoadPosts() {
         commentSection.className = "post-comment-section";
         postElement.appendChild(commentSection);
 
+        let comments = await GetComments(post.id);
+        console.log()
+
         let commentToggle = document.createElement("div");
-        commentToggle.innerHTML = `<i class="fa-solid fa-comment icon-in-text"></i> show comments (${post.commentsCount}) <i class="fa-solid fa-caret-down icon-in-text"></i>`;
+        console.log(comments.total)
+        if (comments.total > 0){
+            commentToggle.innerHTML = `<i class="fa-solid fa-comment icon-in-text"></i> show comments (${comments.total}) <i class="fa-solid fa-caret-down icon-in-text"></i>`;
+            LoadComments(postid)
+        }
+        else {
+            commentToggle.innerHTML = `<i class="fa-solid fa-comment-slash icon-in-text"></i> no comments under this post`;
+        }
         commentSection.appendChild(commentToggle);
+
+
+        //COMMENTS!!!
 
         // Append postElement to fragment and then to the container
         frag.appendChild(postElement);
@@ -199,46 +106,95 @@ async function LoadPosts() {
     place.appendChild(frag);
 }
 
+async function LoadComments(postid){
 
+    let comments = await GetComments(post.id)
 
+    //let i = 0;
+    for (let comment of comments) {
+        //console.log(`-------comment ${i}`);
+        //i++;
 
-/*<div class="post">
-            <div>
-                <p class="post-title">Title</p>
-                <div class="post-user">
-                    <div class="post-img"></div>
-                    <div class="post-user-texts">
-                        <p class="post-name">Maxwell Bebebe</p>
-                        <p class="post-mail">Maxwell@work.ua</p>
-                    </div>
-                </div>
-                <p class="post-text"></p>
-                <div class="post-tags">
-                    <div class="post-details">tag1</div>
-                </div>
-                <div class="post-reactions">
+        function createCommentSection() {
+            // Create the main section element
+            const commentSection = document.createElement("section");
+            commentSection.className = "post-comment";
+            //hiddenDiv.style.display = "none";
 
-                    <div class="post-details">
-                        <i class="fa-solid fa-thumbs-up"></i>
-                        34
-                    </div>
+            // Create the comment header
+            const commentHeader = document.createElement("div");
+            commentHeader.className = "comment-header";
 
-                    <div class="post-details">
-                        <i class="fa-solid fa-thumbs-down"></i>
-                        13
-                    </div>
+            // Create the user info div
+            const postUserDiv = document.createElement("div");
+            postUserDiv.className = "post-user";
 
-                    <div class="post-details">
-                        <i class="fa-solid fa-vr-cardboard"></i>
-                        537
-                    </div>
-                </div>
-            </div>
-            <div class="post-comment-section">
-                <div>
-                    <i class="fa-solid fa-comment icon-in-text"></i>
-                    show comments (34)
-                    <i class="fa-solid fa-caret-down icon-in-text"></i>
-                </div>
-            </div>
-        </div> */
+            // Create the user image div
+            const userImgDiv = document.createElement("div");
+            userImgDiv.className = "post-img";
+            postUserDiv.appendChild(userImgDiv);
+
+            // Create the user texts div
+            const userTextsDiv = document.createElement("div");
+            userTextsDiv.className = "post-user-texts";
+
+            // Create the user name paragraph
+            const userName = document.createElement("p");
+            userName.className = "post-name";
+            userName.textContent = "Maxwell Bebebe"; // Change as needed
+            userTextsDiv.appendChild(userName);
+
+            // Create the user email paragraph
+            const userEmail = document.createElement("p");
+            userEmail.className = "post-mail";
+            userEmail.textContent = "Maxwell@work.ua"; // Change as needed
+            userTextsDiv.appendChild(userEmail);
+
+            // Append user texts div to user div
+            postUserDiv.appendChild(userTextsDiv);
+
+            // Append user div to comment header
+            commentHeader.appendChild(postUserDiv);
+
+            // Create the post details div for reactions
+            const postDetailsDiv = document.createElement("div");
+            postDetailsDiv.className = "post-details";
+
+            // Create the thumbs-up icon
+            const thumbsUpIcon = document.createElement("i");
+            thumbsUpIcon.className = "fa-solid fa-thumbs-up";
+            postDetailsDiv.appendChild(thumbsUpIcon);
+
+            // Create the thumbs-up count text
+            const thumbsUpCount = document.createTextNode(comment.likes);
+            postDetailsDiv.appendChild(thumbsUpCount);
+
+            // Append post details to comment header
+            commentHeader.appendChild(postDetailsDiv);
+
+            // Append the comment header to the section
+            commentSection.appendChild(commentHeader);
+
+            // Create the comment text paragraph
+            const postText = document.createElement("p");
+            postText.className = "post-text";
+            postText.textContent = comment.body;
+            commentSection.appendChild(postText);
+
+            // Append the comment section to the desired container
+            const container = document.getElementById("comments-container"); // Ensure this ID is present in your HTML
+            container.appendChild(commentSection);
+        }
+
+        // Call the function to create the comment section
+        createCommentSection();
+
+        console.log(comment.body);
+        console.log(comment.likes);
+        let user = await GetUserById(comment.user.id);
+        console.log(user.firstName + user.maidenName + user.lastName);
+        console.log(user.email);
+
+    }
+
+}
