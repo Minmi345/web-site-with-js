@@ -10,43 +10,43 @@
     background-color: var(--secondary-colour);
     border-radius: 2rem;
     justify-content: space-between;
-    display: flex;    
+    display: flex;
 }
 
-.post-title{
+.post-title {
     margin: 1.5rem 1rem;
     font-size: 2rem;
 }
 
-.post-name{
+.error-status {
+    display: none;
+}
+
+
+
+.error-status#error-active {
+    display: block;
+}
+
+.post-name {
     margin: 0;
 
 }
 
-.post-user{
+.post-user {
     margin: 0 1rem;
     display: flex;
     align-content: center;
     gap: 1rem;
 }
 
-.post-user-texts{
+.post-user-texts {
     display: flex;
     flex-direction: column;
     gap: 0;
 }
 
-.post-img{
-    width:  3rem;
-    height: 3rem;
-    background-color: var(--highlight-colour);
-    border-radius: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.post-mail{
+.post-mail {
     margin-top: 0;
     text-align: right;
     font-size: 0.8rem;
@@ -76,7 +76,7 @@
     gap: 1rem;
 }
 
-.post-tags{
+.post-tags {
     margin: 0.3rem 1rem;
 }
 
@@ -84,11 +84,12 @@
     width: 100%;
     padding: 1rem;
     border-top: 4px dotted var(--heading-colour);
-   /* background-color: var(--primary-hover);*/
+    /* background-color: var(--primary-hover);*/
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
-    margin-top: auto; /* Pushes to bottom */
+    margin-top: auto;
+    /* Pushes to bottom */
 }
 
 .post-comment {
@@ -108,7 +109,7 @@
     width: 100%;
 }
 
-.icon-in-text{
+.icon-in-text {
     margin: 0 0.5rem;
 }
 
@@ -126,12 +127,12 @@
 */
 @media (max-width: 1800px) {
     .post {
-            flex-direction: column;
-        }
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 768px) {
     #post-grid {
-            grid-template-columns: 1fr;
-        }
+        grid-template-columns: 1fr;
+    }
 }

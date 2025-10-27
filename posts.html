@@ -17,12 +17,13 @@
         <p class="brand-txt"> FireLeaf</p>
         <nav>
             <a href="./index.html">Home</a>
-            <a href="./posts.html">Posts</a>
+            <a href="./posts.html" id="selected-page">Posts</a>
             <a href="./contact.html">Contact</a>
         </nav>
     </header>
 
     <main>
+        <h1 class="error-status" id="no-error">no Internet you silly GOOOSE</h1>
         <div id="post-grid">
 
             <!-- Post Template -->
@@ -31,7 +32,7 @@
                     <div>
                         <p class="post-title"></p>
                         <div class="post-user">
-                            <div class="post-img"></div>
+                            <img class="post-img"></img>
                             <div class="post-user-texts">
                                 <p class="post-name"></p>
                                 <p class="post-mail"></p>
@@ -39,7 +40,6 @@
                         </div>
                         <p class="post-text"></p>
                         <div class="post-tags">
-                            <!-- Tags will be populated here -->
                         </div>
                         <div class="post-reactions">
                             <div id="thumbs-up">
@@ -58,10 +58,14 @@
                     </div>
                     <section class="post-comment-section">
                         <div class="comment-toggle">
-                            <div class="unsuccess">
-                            <i class="fa-solid fa-comment icon-in-text"></i>
-                            Hide comments (<span class="comment-count"></span>)
-                            <i class="fa-solid fa-caret-up icon-in-text"></i>
+                            <div class="yes-comments">
+                                <i class="fa-solid fa-comment icon-in-text"></i> Comments (<span id="number-comments"></span>) <i
+                                    class="fa-solid fa-caret-down icon-in-text"></i>
+
+                            </div>
+                            <div class="no-comments">
+                                <i class="fa-solid fa-comment-slash icon-in-text"></i>
+                                no comments under this post
                             </div>
 
                         </div>
@@ -90,6 +94,16 @@
                     </div>
                     <p class="post-text"></p>
                 </section>
+            </template>
+
+            <template id="user-template">
+                <div class="post-user">
+                    <img class="post-img"></img>
+                    <div class="post-user-texts">
+                        <p class="post-name"></p>
+                        <p class="post-mail"></p>
+                    </div>
+                </div>
             </template>
 
 

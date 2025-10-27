@@ -5,20 +5,30 @@ console.log('helloooo?')
 LoadPosts();
 
 async function LoadPosts() {
-    const posts = await GetPosts(5);
+    let posts;
+    try {
 
+        posts = await GetPosts(5);
+    }
+    catch {
+        const goose = document.querySelector(".error-status");
+        goose.setAttribute("id", "error-active");
+    }
+
+    const frag = document.createDocumentFragment();
     for (const post of posts) {
-        const frag = document.createDocumentFragment();
         const postTemplate = document.getElementById('post-template').content.cloneNode(true);
-        const user = await GetUserById(post.userId);
 
         // Set ID of template
         postTemplate.querySelector(".post").setAttribute("id", post.id);
 
         // Modify the post template
         postTemplate.querySelector('.post-title').textContent = post.title;
-        postTemplate.querySelector('.post-name').textContent = `${user.firstName} ${user.maidenName} ${user.lastName}`;
-        postTemplate.querySelector('.post-mail').textContent = user.email;
+
+
+        //postTemplate.appendChild(await LoadUser( await GetUserById(post.userId)));
+
+
         postTemplate.querySelector('.post-text').textContent = post.body;
 
         // Append tags
@@ -40,21 +50,34 @@ async function LoadPosts() {
         const comments = await GetComments(post.id);
         const commentToggle = postTemplate.querySelector('.comment-toggle');
 
+        const yesComm = postTemplate.querySelector(".yes-comments");
+        const noComm = postTemplate.querySelector(".no-comments");
+
         if (comments.length > 0) {
-            commentToggle.innerHTML = `<i class="fa-solid fa-comment icon-in-text"></i> show comments (${comments.length}) <i class="fa-solid fa-caret-down icon-in-text"></i>`;
+            const numscomments = postTemplate.querySelector('#number-comments').textContent = comments.length;
+            noComm.style.display = "none";
+            //commentToggle.innerHTML = `<i class="fa-solid fa-comment icon-in-text"></i> show comments (${comments.length}) <i class="fa-solid fa-caret-down icon-in-text"></i>`;
         } else {
-            commentToggle.innerHTML = `<i class="fa-solid fa-comment-slash icon-in-text"></i> no comments under this post`;
+            yesComm.style.display = "none";
+
         }
 
+
+
         frag.appendChild(postTemplate);
-        place.appendChild(frag);
 
         //create toggle
-        
 
-        await LoadComments(post.id);
+        //Hide comments(<span class="comment-count"></span>)
+        //    < i class="fa-solid fa-caret-up icon-in-text" ></i >
+
     }
 
+    place.appendChild(frag);
+
+    for (let post of posts) {
+        await LoadComments(post.id);
+    }
 }
 
 async function LoadComments(postId) {
@@ -66,11 +89,19 @@ async function LoadComments(postId) {
         const user = await GetUserById(comment.user.id);
 
         // Modify the comment template
-        commentTemplate.querySelector('.post-name').textContent = `${user.firstName} ${user.maidenName} ${user.lastName}`;
-        commentTemplate.querySelector('.post-mail').textContent = user.email;
+        //commentTemplate.appendChild(await LoadUser(await GetUserById(post.userId)));
+
         commentTemplate.querySelector('.like-count').textContent = comment.likes;
         commentTemplate.querySelector('.post-text').textContent = comment.body;
 
         container.appendChild(commentTemplate);
     }
+}
+
+async function LoadUser(user) {
+    const userTemplate = document.getElementById('user-template').content.cloneNode(true);
+    userTemplate.querySelector('.post-name').textContent = `${user.firstName} ${user.maidenName} ${user.lastName}`;
+    userTemplate.querySelector('.post-img').src = user.image;
+    userTemplate.querySelector('.post-mail').textContent = user.email;
+    
 }

@@ -65,6 +65,12 @@ body {
     color: var(--text-colour);
 }
 
+
+#selected-page {
+    background-color: color-mix(in srgb, var(--link-hover-colour) 30%, var(--highlight-colour));
+    padding: 2rem 1rem;
+}
+
 /*BRAND*/
 
 
@@ -91,7 +97,7 @@ body {
 
 main {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     min-height: 71vh;
     /* 100-6*2 */
