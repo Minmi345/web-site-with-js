@@ -59,7 +59,6 @@ const BASE = 'https://dummyjson.com';
  * @property {number} likes - Total number of likes for the comment.
  * @property {User} user - The user who made the comment.
  */
-
 /**
  * Fetches comments for a specific post.
  * @param {number} postid - The identifier of the post for which to fetch comments.
@@ -69,7 +68,7 @@ const BASE = 'https://dummyjson.com';
 export async function GetComments(postid) {
     const res = await fetch(`${BASE}/comments/post/${postid}`);
     if (!res.ok) throw new Error('No comments?');
-    return res.json();
+    return (await res.json()).comments;
 }
 /**
  * @param {*} limit 
@@ -78,7 +77,7 @@ export async function GetComments(postid) {
 export async function GetPosts(limit = 1) {
     const res = await fetch(`${BASE}/posts?limit=${limit}`);
     if (!res.ok) throw new Error('Failed to fetch posts');
-    return res.json();
+    return (await res.json()).posts;
 }
 export async function GetPost(id = 1) {
     const res = await fetch(`${BASE}/posts/${id}`);

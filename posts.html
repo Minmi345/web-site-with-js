@@ -25,220 +25,73 @@
     <main>
         <div id="post-grid">
 
-            <!--post1
-        <div class="post">
-            <div>
-                <p class="post-title">Title</p>
-                <div class="post-user">
-                    <div class="post-img"></div>
-                    <div class="post-user-texts">
-                        <p class="post-name">Maxwell Bebebe</p>
-
-                        <p class="post-mail">Maxwell@work.ua</p>
-
-                    </div>
-                </div>
-
-                <p class="post-text">
-                    <i class="fa-solid fa-thumbs-up" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-thumbs-down" style="color: #FFD43B;"></i>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id inventore, fugit eveniet velit, quasi
-                    cupiditate, ullam quibusdam suscipit quae odit ut unde eum laudantium recusandae et? Obcaecati
-                    provident
-                    eum officia?
-                </p>
-
-                <div class="post-tags">
-                    <div class="post-details">tag1</div>
-                    <div class="post-details">loooong tag2</div>
-                    <div class="post-details">tag3</div>
-                </div>
-                <div class="post-reactions">
-
-                    <div class="post-details">
-                        <i class="fa-solid fa-thumbs-up"></i>
-                        34
-                    </div>
-
-                    <div class="post-details">
-                        <i class="fa-solid fa-thumbs-down"></i>
-                        13
-                    </div>
-
-                    <div class="post-details">
-                        <i class="fa-solid fa-vr-cardboard"></i>
-                        537
-                    </div>
-                </div>
-            </div>
-            <div class="post-comment-section">
-                <div>
-                    <i class="fa-solid fa-comment icon-in-text"></i>
-                    show comments (34)
-                    <i class="fa-solid fa-caret-down icon-in-text"></i>
-                </div>
-            </div>
-        </div>-->
-
-
-
-
-            <!--post2
-        <div class="post">
-            <div>
-                <p class="post-title">Title</p>
-                <div class="post-user">
-                    <div class="post-img"></div>
-                    <div class="post-user-texts">
-                        <p class="post-name">Maxwell Bebebe</p>
-
-                        <p class="post-mail">Maxwell@work.ua</p>
-
-                    </div>
-                </div>
-
-                <p class="post-text">
-                    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                    <i class="fa-solid fa-thumbs-up" style="color: #FFD43B;"></i>
-                    <i class="fa-solid fa-thumbs-down" style="color: #FFD43B;"></i>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id inventore, fugit eveniet velit, quasi
-                    cupiditate,
-                    ullam quibusdam suscipit quae odit ut unde eum laudantium recusandae et? Obcaecati provident eum
-                    officia?
-                </p>
-
-                <div class="post-tags">
-                    <div class="post-details">tag1</div>
-                    <div class="post-details">loooong tag2</div>
-                    <div class="post-details">tag3</div>
-                </div>
-                <div class="post-reactions">
-
-                    <div class="post-details">
-                        <i class="fa-solid fa-thumbs-up"></i>
-                        34
-                    </div>
-
-                    <div class="post-details">
-                        <i class="fa-solid fa-thumbs-down"></i>
-                        13
-                    </div>
-
-                    <div class="post-details">
-                        <i class="fa-solid fa-vr-cardboard"></i>
-                        537
-                    </div>
-                </div>
-            </div>
-            <div class="post-comment-section">
-                <div>
-                    <i class="fa-solid fa-comment-slash icon-in-text"></i> no comments under this post
-                </div>
-            </div>
-        </div>-->
-
-
-
-
-            <!--post3-->
-            <div class="post">
-                <div>
-                    <p class="post-title">Title</p>
-                    <div class="post-user">
-                        <div class="post-img"></div>
-                        <div class="post-user-texts">
-                            <p class="post-name">Maxwell Bebebe</p>
-
-                            <p class="post-mail">Maxwell@work.ua</p>
-
+            <!-- Post Template -->
+            <template id="post-template">
+                <div class="post" id="post-id">
+                    <div>
+                        <p class="post-title"></p>
+                        <div class="post-user">
+                            <div class="post-img"></div>
+                            <div class="post-user-texts">
+                                <p class="post-name"></p>
+                                <p class="post-mail"></p>
+                            </div>
+                        </div>
+                        <p class="post-text"></p>
+                        <div class="post-tags">
+                            <!-- Tags will be populated here -->
+                        </div>
+                        <div class="post-reactions">
+                            <div id="thumbs-up">
+                                <i class="fa-solid fa-thumbs-up"></i>
+                                <span id="content"></span>
+                            </div>
+                            <div id="thumbs-down">
+                                <i class="fa-solid fa-thumbs-down"></i>
+                                <span id="content"></span>
+                            </div>
+                            <div id="views">
+                                <i class="fa-solid fa-vr-cardboard"></i>
+                                <span id="content"></span>
+                            </div>
                         </div>
                     </div>
+                    <section class="post-comment-section">
+                        <div class="comment-toggle">
+                            <div class="unsuccess">
+                            <i class="fa-solid fa-comment icon-in-text"></i>
+                            Hide comments (<span class="comment-count"></span>)
+                            <i class="fa-solid fa-caret-up icon-in-text"></i>
+                            </div>
 
-                    <p class="post-text">
-                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                        <i class="fa-solid fa-thumbs-up" style="color: #FFD43B;"></i>
-                        <i class="fa-solid fa-thumbs-down" style="color: #FFD43B;"></i>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Id inventore, fugit eveniet velit,
-                        quasi
-                        cupiditate,
-                        ullam quibusdam suscipit quae odit ut unde eum laudantium recusandae et? Obcaecati provident eum
-                        officia?
-                    </p>
+                        </div>
+                        <section class="comments-container">
+                            <!-- Comments will be populated here -->
+                        </section>
+                    </section>
+                </div>
+            </template>
 
-                    <div class="post-tags">
-                        <div class="post-details">tag1</div>
-                        <div class="post-details">loooong tag2</div>
-                        <div class="post-details">tag3</div>
-                    </div>
-                    <div class="post-reactions">
-
+            <!-- Comment Template -->
+            <template id="comment-template">
+                <section class="post-comment">
+                    <div class="comment-header">
+                        <div class="post-user">
+                            <div class="post-img"></div>
+                            <div class="post-user-texts">
+                                <p class="post-name"></p>
+                                <p class="post-mail"></p>
+                            </div>
+                        </div>
                         <div class="post-details">
                             <i class="fa-solid fa-thumbs-up"></i>
-                            34
-                        </div>
-
-                        <div class="post-details">
-                            <i class="fa-solid fa-thumbs-down"></i>
-                            13
-                        </div>
-
-                        <div class="post-details">
-                            <i class="fa-solid fa-vr-cardboard"></i>
-                            537
+                            <span class="like-count"></span>
                         </div>
                     </div>
-                </div>
-
-                <section class="post-comment-section">
-                    <div>
-                        <i class="fa-solid fa-comment icon-in-text"></i>
-                        Hide comments (34)
-                        <i class="fa-solid fa-caret-up icon-in-text"></i>
-                    </div>
-                    <section class="post-comment">
-                        <div class="comment-header">
-                            <div class="post-user">
-                                <div class="post-img"></div>
-                                <div class="post-user-texts">
-                                    <p class="post-name">Maxwell Bebebe</p>
-
-                                    <p class="post-mail">Maxwell@work.ua</p>
-
-                                </div>
-                            </div>
-                            <div class="post-details">
-                                <i class="fa-solid fa-thumbs-up"></i>
-                                34
-                            </div>
-                        </div>
-                        <p class="post-text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        </p>
-                    </section>
-
-                    <section class="post-comment">
-                        <div class="comment-header">
-                            <div class="post-user">
-                                <div class="post-img"></div>
-                                <div class="post-user-texts">
-                                    <p class="post-name">Maxwell Bebebe</p>
-
-                                    <p class="post-mail">Maxwell@work.ua</p>
-
-                                </div>
-                            </div>
-                            <div class="post-details">
-                                <i class="fa-solid fa-thumbs-up"></i>
-                                0
-                            </div>
-                        </div>
-                        <p class="post-text">
-                            aspernatur perspici
-                        </p>
-                    </section>
-
+                    <p class="post-text"></p>
                 </section>
-            </div>
+            </template>
+
 
         </div>
     </main>
