@@ -1,29 +1,12 @@
-import { GetPosts, GetPost, GetUserById, GetComments } from './fetchAPI.js';
+import { LoadPosts } from './generateui.js';
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log(GetPosts());
 
-    /*
 
-let filteredUsers = {}
-
-function userCreator(user) {
-    return { firstname user.Firstname, lastName: user.LastName, age: user.age }
-}
-
-for (user in filteredUSers) {
-
-} */
-
-    //GetInfo()
-   //console.log();
-
+    console.log('working?')
+    alert("should be generated");
 
 })
-
-
-
-
 
 
 //working..!

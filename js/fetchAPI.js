@@ -1,20 +1,17 @@
 const BASE = 'https://dummyjson.com';
+
 /**
- * @typedef {Object} Post
- * @property {number} id - Unique identifier for the post.
- * @property {string} title - Title of the post.
- * @property {string} body - Content of the post.
- * @property {Array<string>} tags - List of tags associated with the post.
- * @property {Object} reactions - The reactions to the post.
- * @property {number} reactions.likes - Number of likes.
- * @property {number} reactions.dislikes - Number of dislikes.
- * @property {number} views - Total number of views for the post.
- * @property {number} userId - Unique identifier for the user who created the post.
+ * Fetches comments for a specific post.
+ * @param {number} postid - The identifier of the post for which to fetch comments.
+ * @returns {Promise<Array<Comment>>} A promise that resolves to an array of comment objects.
+ * @throws {Error} Throws an error if the fetch request is not successful.
  */
-
-
+export async function GetComments(postid) {
+    const res = await fetch(`${BASE}/comments/post/${postid}`);
+    if (!res.ok) throw new Error('No comments?');
+    return res.json();
+}
 /**
- * 
  * @param {*} limit 
  * @returns {Promise<Array<Post>>}
  */
@@ -28,6 +25,26 @@ export async function GetPost(id = 1) {
     if (!res.ok) throw new Error('Failed to fetch post');
     return res.json();
 }
+
+export async function GetUserById(id) {
+    const res = await fetch(`${BASE}/users/${id}`);
+    //filter?key=hair.color&value=Brown
+    if (!res.ok) throw new Error('Failed to fetch products');
+    return res.json();
+}
+
+/**
+ * @typedef {Object} Post
+ * @property {number} id - Unique identifier for the post.
+ * @property {string} title - Title of the post.
+ * @property {string} body - Content of the post.
+ * @property {Array<string>} tags - List of tags associated with the post.
+ * @property {Object} reactions - The reactions to the post.
+ * @property {number} reactions.likes - Number of likes.
+ * @property {number} reactions.dislikes - Number of dislikes.
+ * @property {number} views - Total number of views for the post.
+ * @property {number} userId - Unique identifier for the user who created the post.
+ */
 
 /**
  * @typedef {Object} Address
@@ -77,23 +94,6 @@ export async function GetPost(id = 1) {
  * @property {User} user - The user who made the comment.
  */
 
-/**
- * Fetches comments for a specific post.
- * @param {number} postid - The identifier of the post for which to fetch comments.
- * @returns {Promise<Array<Comment>>} A promise that resolves to an array of comment objects.
- * @throws {Error} Throws an error if the fetch request is not successful.
- */
-export async function GetComments(postid){
-    const res = await fetch(`${BASE}/comments/post/${postid}`);
-    if (!res.ok) throw new Error('No comments?');
-    return res.json();
-}
 
-export async function GetUserById(id) {
-    const res = await fetch(`${BASE}/users/${id}`);
-    //filter?key=hair.color&value=Brown
-    if (!res.ok) throw new Error('Failed to fetch products');
-    return res.json();
-}
 
 
