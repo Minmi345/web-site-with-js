@@ -18,6 +18,7 @@ export async function LoadPosts() {
     catch {
         const goose = document.querySelector(".error-status");
         goose.setAttribute("id", "error-active");
+        return;git
     }
 
     const frag = document.createDocumentFragment();
@@ -32,6 +33,7 @@ export async function LoadPosts() {
 
 
         postTemplate.querySelector(".post-user").appendChild(await LoadUser(await GetUserById(post.userId)));
+
 
         postTemplate.querySelector('.post-text').textContent = post.body;
 
@@ -69,18 +71,16 @@ export async function LoadPosts() {
 
         frag.appendChild(postTemplate);
 
-        //create toggle
-
-        //Hide comments(<span class="comment-count"></span>)
-        //    < i class="fa-solid fa-caret-up icon-in-text" ></i >
-
     }
 
     place.appendChild(frag);
 
+
     for (let post of posts) {
         await LoadComments(post);
     }
+
+
 }
 
 /**
@@ -95,15 +95,44 @@ async function LoadComments(post) {
 
     for (const comment of comments) {
         const commentTemplate = document.getElementById('comment-template').content.cloneNode(true);
-        
-        const usercontainer = commentTemplate.querySelector('.comment-header');        
-        usercontainer.appendChild(await LoadUser(await GetUserById(post.userId)));
+
+        const usercontainer = commentTemplate.querySelector('.comment-header');
+        const userPRofile = await LoadUser(await GetUserById(comment.user.id))
+        usercontainer.appendChild(userPRofile);
+
 
         commentTemplate.querySelector('.like-count').textContent = comment.likes;
         commentTemplate.querySelector('.post-text').textContent = comment.body;
 
         container.appendChild(commentTemplate);
+
+
     }
+}
+
+function ShowInfoAboutUser(user) {
+    let coolbg = document.getElementById("user-info-bg");
+    let uinfo = document.getElementById("user-info-bg").firstElementChild;
+
+    coolbg.style.display = 'flex';
+
+    uinfo.querySelector('#fname').textContent = `First name: ${user.firstName}`;
+    uinfo.querySelector('#lname').textContent = `Last Name: ${user.lastName}`;
+    uinfo.querySelector('#mail').textContent = `Email: ${user.email}`;
+    uinfo.querySelector('#birth').textContent = `Birthdate: ${user.birthDate}`;
+    uinfo.querySelector('#blood').textContent = `BloodGroup: ${user.bloodGroup}`;
+    uinfo.querySelector('#adress').textContent = `Adress: ${user.address?.address}`;
+
+
+    // uinfo.textContent = `
+    //  \n
+    // \n
+    // \n
+    // \n
+    // \n
+    // Country: ${user.coordinates?.country}`;
+
+
 }
 
 async function LoadUser(user) {
@@ -116,5 +145,9 @@ async function LoadUser(user) {
     userTemplate.querySelector('.post-name').textContent = `${user.firstName} ${user.maidenName} ${user.lastName}`;
     userTemplate.querySelector('.post-img').src = user.image;
     userTemplate.querySelector('.post-mail').textContent = user.email;
+    userTemplate.querySelector(`.post-user`).firstElementChild.addEventListener("click", () => ShowInfoAboutUser(user));
+
+
+
     return userTemplate
 }

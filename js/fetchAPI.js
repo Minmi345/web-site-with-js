@@ -66,7 +66,7 @@ const BASE = 'https://dummyjson.com';
  * @throws {Error} Throws an error if the fetch request is not successful.
  */
 export async function GetComments(postid) {
-    const res = await fetch(`${BASE}/comments/post/${postid}`);
+    const res = await fetch(`${BASE}/posts/${postid}/comments`);
     if (!res.ok) throw new Error('No comments?');
     return (await res.json()).comments;
 }
