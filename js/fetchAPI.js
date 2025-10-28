@@ -76,7 +76,7 @@ export async function GetComments(postid) {
  */
 
 //https://dummyjson.com/posts?limit=10&skip=0
-export async function GetPosts(limit = 1, skip=0) {
+export async function GetPosts(limit = 1, skip = 0) {
     const res = await fetch(`${BASE}/posts?limit=${limit}&skip=${skip}`);
     if (!res.ok) throw new Error('Failed to fetch posts');
     return (await res.json()).posts;

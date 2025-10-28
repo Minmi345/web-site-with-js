@@ -14,6 +14,7 @@ main{
     border-radius: 2rem;
     justify-content: space-between;
     display: flex;
+        flex-direction: column;
 }
 
 .post-title {
@@ -54,6 +55,16 @@ main{
     text-align: right;
     font-size: 0.8rem;
     color: var(--heading-colour);
+}
+
+.post-img {
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--highlight-colour);
+    border-radius: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .post-text {
@@ -128,11 +139,43 @@ main{
         }
 }
 */
-@media (max-width: 1800px) {
-    .post {
-        flex-direction: column;
-    }
+
+#user-info-bg{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+        /* Use fixed positioning */
+        /* Aligns to the top of the viewport */
+        /* Aligns to the left of the viewport */
+        top: 0;
+        width: 100vw;
+        /* Full viewport width */
+        height: 100vh;
+
 }
+
+.user-info-container {
+    display:flex;
+    left: 50%;
+    top: 20%;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 20%;
+    z-index: 11;
+    background-color: var(--secondary-colour);
+    border-radius: 2rem;
+    justify-content: space-between;
+    
+}
+
+
+
+
+
 
 @media (max-width: 768px) {
     #post-grid {

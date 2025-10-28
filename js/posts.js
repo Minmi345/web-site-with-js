@@ -7,10 +7,18 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 let btn = document.getElementById("load-more").addEventListener("click",MorePosts);
+let uinfo = document.getElementById("user-info-bg");
+
+uinfo.addEventListener("click",Hide);
+
 function MorePosts(){
     LoadPosts();
 }
 
+function Hide(){
+    uinfo.style.display = "none";
+
+}
 
 //working..!
 // async function GetInfo() {

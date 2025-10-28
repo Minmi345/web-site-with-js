@@ -3,13 +3,17 @@ import { GetPosts, GetPost, GetUserById, GetComments } from './fetchAPI.js';
 let place = document.getElementById("post-grid");
 let skip = 0;
 
+/**
+ * @typedef {import('./fetchAPI.js').Post} Post
+ */
+
 export async function LoadPosts() {
     let posts;
     try {
 
         let load = 6;
-        posts = await GetPosts(load,skip);
-        skip +=load
+        posts = await GetPosts(load, skip);
+        skip += load
     }
     catch {
         const goose = document.querySelector(".error-status");
@@ -27,7 +31,7 @@ export async function LoadPosts() {
         postTemplate.querySelector('.post-title').textContent = post.title;
 
 
-        //postTemplate.appendChild(await LoadUser( await GetUserById(post.userId)));
+        postTemplate.querySelector(".post-user").appendChild(await LoadUser(await GetUserById(post.userId)));
 
         postTemplate.querySelector('.post-text').textContent = post.body;
 
@@ -56,7 +60,6 @@ export async function LoadPosts() {
         if (comments.length > 0) {
             const numscomments = postTemplate.querySelector('#number-comments').textContent = comments.length;
             noComm.style.display = "none";
-            //commentToggle.innerHTML = `<i class="fa-solid fa-comment icon-in-text"></i> show comments (${comments.length}) <i class="fa-solid fa-caret-down icon-in-text"></i>`;
         } else {
             yesComm.style.display = "none";
 
@@ -76,20 +79,25 @@ export async function LoadPosts() {
     place.appendChild(frag);
 
     for (let post of posts) {
-        await LoadComments(post.id);
+        await LoadComments(post);
     }
 }
 
-async function LoadComments(postId) {
-    const comments = (await GetComments(postId));
-    const container = document.querySelector(`.post#\\3${postId}`).querySelector(".comments-container");
+/**
+ * Fetches comments for a specific post.
+ * @param {Post} post - The identifier of the post for which to fetch comments.
+ * @returns {Promise<Any>} A promise that resolves to an array of comment objects.
+ * @throws {Error} Throws an error if the fetch request is not successful.
+ */
+async function LoadComments(post) {
+    const comments = (await GetComments(post.id));
+    const container = document.querySelector(`.post#\\3${post.id}`).querySelector(".comments-container");
 
     for (const comment of comments) {
         const commentTemplate = document.getElementById('comment-template').content.cloneNode(true);
-        const user = await GetUserById(comment.user.id);
-
-        // Modify the comment template
-        //commentTemplate.appendChild(await LoadUser(await GetUserById(post.userId)));
+        
+        const usercontainer = commentTemplate.querySelector('.comment-header');        
+        usercontainer.appendChild(await LoadUser(await GetUserById(post.userId)));
 
         commentTemplate.querySelector('.like-count').textContent = comment.likes;
         commentTemplate.querySelector('.post-text').textContent = comment.body;
@@ -100,8 +108,13 @@ async function LoadComments(postId) {
 
 async function LoadUser(user) {
     const userTemplate = document.getElementById('user-template').content.cloneNode(true);
+
+    // Set ID of template
+    userTemplate.querySelector('.post-user').setAttribute("id", user.id);
+
+
     userTemplate.querySelector('.post-name').textContent = `${user.firstName} ${user.maidenName} ${user.lastName}`;
     userTemplate.querySelector('.post-img').src = user.image;
     userTemplate.querySelector('.post-mail').textContent = user.email;
-    
+    return userTemplate
 }
