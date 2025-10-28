@@ -1,4 +1,4 @@
-import { GetPosts, GetPost, GetUserById, GetComments } from './fetchAPI.js';
+import { GetPosts, GetUsers, GetUserById, GetComments } from './fetchAPI.js';
 
 let place = document.getElementById("post-grid");
 let skip = 0;
@@ -9,6 +9,8 @@ let skip = 0;
 
 export async function LoadPosts() {
     let posts;
+    await GetUsers();
+
     try {
 
         let load = 6;
@@ -18,7 +20,7 @@ export async function LoadPosts() {
     catch {
         const goose = document.querySelector(".error-status");
         goose.setAttribute("id", "error-active");
-        return;git
+        return;
     }
 
     const frag = document.createDocumentFragment();
@@ -32,7 +34,7 @@ export async function LoadPosts() {
         postTemplate.querySelector('.post-title').textContent = post.title;
 
 
-        postTemplate.querySelector(".post-user").appendChild(await LoadUser(await GetUserById(post.userId)));
+        postTemplate.querySelector(".post-user").appendChild(await LoadUser( GetUserById(post.userId)));
 
 
         postTemplate.querySelector('.post-text').textContent = post.body;
@@ -97,7 +99,7 @@ async function LoadComments(post) {
         const commentTemplate = document.getElementById('comment-template').content.cloneNode(true);
 
         const usercontainer = commentTemplate.querySelector('.comment-header');
-        const userPRofile = await LoadUser(await GetUserById(comment.user.id))
+        const userPRofile = await LoadUser( GetUserById(comment.user.id))
         usercontainer.appendChild(userPRofile);
 
 
@@ -122,15 +124,6 @@ function ShowInfoAboutUser(user) {
     uinfo.querySelector('#birth').textContent = `Birthdate: ${user.birthDate}`;
     uinfo.querySelector('#blood').textContent = `BloodGroup: ${user.bloodGroup}`;
     uinfo.querySelector('#adress').textContent = `Adress: ${user.address?.address}`;
-
-
-    // uinfo.textContent = `
-    //  \n
-    // \n
-    // \n
-    // \n
-    // \n
-    // Country: ${user.coordinates?.country}`;
 
 
 }

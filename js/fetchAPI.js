@@ -65,10 +65,13 @@ const BASE = 'https://dummyjson.com';
  * @returns {Promise<Array<Comment>>} A promise that resolves to an array of comment objects.
  * @throws {Error} Throws an error if the fetch request is not successful.
  */
+
+var users = {};
+
 export async function GetComments(postid) {
-    const res = await fetch(`${BASE}/posts/${postid}/comments`);
-    if (!res.ok) throw new Error('No comments?');
-    return (await res.json()).comments;
+        const res = await fetch(`${BASE}/posts/${postid}/comments`);
+        if (!res.ok) throw new Error('No comments?');
+    return (await res.json()).comments
 }
 /**
  * @param {*} limit 
@@ -81,17 +84,19 @@ export async function GetPosts(limit = 1, skip = 0) {
     if (!res.ok) throw new Error('Failed to fetch posts');
     return (await res.json()).posts;
 }
-export async function GetPost(id = 1) {
-    const res = await fetch(`${BASE}/posts/${id}`);
-    if (!res.ok) throw new Error('Failed to fetch post');
-    return res.json();
+
+export async function GetUsers() {
+    if (Object.keys(users).length === 0) {
+        const res = await fetch(`${BASE}/users?limit=208`);
+        if (!res.ok) throw new Error('Failed to fetch users');
+        users = (await res.json()).users;
+    }
+    return users;
 }
 
-export async function GetUserById(id) {
-    const res = await fetch(`${BASE}/users/${id}`);
-    //filter?key=hair.color&value=Brown
-    if (!res.ok) throw new Error('Failed to fetch products');
-    return res.json();
+
+export function GetUserById(id) {
+    return users[id - 1];
 }
 
 
