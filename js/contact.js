@@ -13,6 +13,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const cb = document.getElementById("tick");
     success.style.display = "none";
 
+    name.addEventListener('input', checkinputonnumbers)
+    
+    function checkinputonnumbers(){
+        //alert(name)
+        const isThereNum = /\d/; 
+      if (isThereNum.test(name.value)) {
+            nameerr.textContent = ("Don't be silly, no numbers in name");
+            name.style.border = "1px solid red";
+        }
+        else{
+          nameerr.textContent = "‎ ‎";
+          name.style.borderColor = "#ccc"
+
+
+        }
+    }
+
 
     if (cb.checked) {
         btnSubmit.disabled = false;
@@ -65,10 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(!isThereNum.test(name))
         if (name.value.trim() === ""){
             nameerr.textContent = ("Name is required");
-            name.style.border = "1px solid red";
-        }
-        else if (isThereNum.test(name.value)){
-            nameerr.textContent = ("Don't be silly, no numbers in name");
             name.style.border = "1px solid red";
         }
         else{

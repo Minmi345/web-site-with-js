@@ -66,7 +66,7 @@ body {
 }
 
 
-#selected-page {
+.selected-page {
     background-color: color-mix(in srgb, var(--link-hover-colour) 30%, var(--highlight-colour));
     padding: 2rem 1rem;
 }
@@ -132,11 +132,6 @@ nav a {
     margin: 0 5%;
     padding: 4px 10px;
     border-radius: 0.5rem;
-}
-
-nav a:hover {
-    /*анімація туто*/
-    background-color: var(--bg-nav-buttons-hover);
 }
 
 *,
